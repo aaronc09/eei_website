@@ -51,9 +51,9 @@ nav{
 .nav-links a{font-size:.82rem;font-weight:500;color:var(--slate-mid);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--slate)}
 .nav-actions{display:flex;gap:.75rem;align-items:center}
-.btn-ghost-nav{font-size:.82rem;font-weight:600;color:var(--slate);background:none;border:1.5px solid var(--border-strong);padding:.5rem 1.15rem;cursor:pointer;border-radius:999px;transition:all .2s}
+.btn-ghost-nav{font-size:.82rem;font-weight:600;color:var(--slate);background:none;border:1.5px solid var(--border-strong);padding:.5rem 1.15rem;cursor:pointer;border-radius:999px;transition:all .2s;text-decoration:none}
 .btn-ghost-nav:hover{border-color:var(--slate-mid)}
-.btn-coral-nav{font-size:.82rem;font-weight:600;color:var(--white);background:var(--coral);border:none;padding:.5rem 1.3rem;cursor:pointer;border-radius:999px;transition:background .2s}
+.btn-coral-nav{font-size:.82rem;font-weight:600;color:var(--white);background:var(--coral);border:none;padding:.5rem 1.3rem;cursor:pointer;border-radius:999px;transition:background .2s;text-decoration:none}
 .btn-coral-nav:hover{background:var(--coral-dark)}
 
 .hero{padding-top:70px;min-height:100vh;background:var(--blush);position:relative;overflow:hidden;display:grid;grid-template-rows:1fr auto}
@@ -67,9 +67,9 @@ nav{
 .hero-h1 .italic{font-style:italic;color:var(--coral)}
 .hero-desc{font-size:1.05rem;font-weight:300;line-height:1.82;color:var(--slate-mid);max-width:480px;margin-bottom:2.75rem}
 .hero-ctas{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
-.btn-primary{background:var(--coral);color:var(--white);border:none;padding:.95rem 2.25rem;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:600;border-radius:6px;transition:all .22s;letter-spacing:.01em}
+.btn-primary{display:inline-block;background:var(--coral);color:var(--white);border:none;padding:.95rem 2.25rem;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:600;border-radius:6px;transition:all .22s;letter-spacing:.01em;text-decoration:none}
 .btn-primary:hover{background:var(--coral-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,82,42,.25)}
-.btn-secondary{background:transparent;color:var(--slate);border:1.5px solid var(--border-strong);padding:.95rem 1.85rem;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:500;border-radius:6px;transition:all .22s}
+.btn-secondary{display:inline-block;background:transparent;color:var(--slate);border:1.5px solid var(--border-strong);padding:.95rem 1.85rem;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:500;border-radius:6px;transition:all .22s;text-decoration:none}
 .btn-secondary:hover{border-color:var(--slate-mid)}
 .hero-right{display:flex;flex-direction:column;gap:1.1rem;animation:fadeUp .85s .18s ease both}
 .stat-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.75rem;display:flex;align-items:center;gap:1.3rem;transition:box-shadow .22s,border-color .22s}
@@ -122,6 +122,7 @@ nav{
 .about{padding:8rem 4rem;background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
 .about-visual{position:relative}
 .about-img{background:var(--slate);border-radius:18px;height:400px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.about-img img{width:100%;height:100%;object-fit:cover;display:block}
 .about-img-texture{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px);background-size:22px 22px}
 .about-img-letter{font-family:'Cormorant Garamond',serif;font-size:11rem;font-weight:700;font-style:italic;color:rgba(255,255,255,.06);user-select:none;position:relative;z-index:1}
 .about-badge{position:absolute;top:1.75rem;right:1.75rem;background:var(--coral);border-radius:10px;padding:.9rem 1.25rem;text-align:center;box-shadow:0 8px 24px rgba(200,82,42,.35)}
@@ -157,7 +158,7 @@ nav{
 .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin-bottom:1.5rem}
 .tier{padding:.65rem .25rem;border:1.5px solid var(--border);background:var(--blush);cursor:pointer;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:600;color:var(--slate);border-radius:8px;transition:all .2s}
 .tier:hover,.tier.active{background:var(--slate);color:var(--white);border-color:var(--slate)}
-.give-btn{width:100%;padding:1rem;background:var(--coral);color:var(--white);border:none;border-radius:8px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.975rem;font-weight:700;transition:background .2s}
+.give-btn{display:block;width:100%;padding:1rem;background:var(--coral);color:var(--white);border:none;border-radius:8px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.975rem;font-weight:700;transition:background .2s;text-align:center;text-decoration:none}
 .give-btn:hover{background:var(--coral-dark)}
 .secure{font-size:.72rem;color:var(--slate-light);text-align:center;margin-top:.85rem}
 
@@ -182,19 +183,20 @@ footer{background:var(--slate)}
 <body>
 
 <nav>
-  <a class="nav-brand" href="#">
+  <a class="nav-brand" href="index.html">
     <div class="nav-monogram"><span>E</span></div>
     <div class="nav-wordmark">Emergency Education Initiative<small>501(c)(3) nonprofit</small></div>
   </a>
   <ul class="nav-links">
-    <li><a href="#">Programs</a></li>
-    <li><a href="#">About Us</a></li>
-    <li><a href="#">Events</a></li>
-    <li><a href="#">Resources</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
   <div class="nav-actions">
     <a href="contact.html" class="btn-ghost-nav">Join / Sign Up</a>
-    <button class="btn-coral-nav">Donate</button>
+    <a href="donate.html" class="btn-coral-nav">Donate</a>
   </div>
 </nav>
 
@@ -210,8 +212,8 @@ footer{background:var(--slate)}
       <h1 class="hero-h1">Know what to do<br>when it <span class="italic">matters most.</span></h1>
       <p class="hero-desc">The Emergency Education Initiative trains communities to recognize and respond to life-threatening emergencies. No medical background needed — just a willingness to learn and act.</p>
       <div class="hero-ctas">
-        <button class="btn-primary">Find a free workshop →</button>
-        <button class="btn-secondary">Our mission</button>
+        <a href="events.html" class="btn-primary">Find a free workshop →</a>
+        <a href="about.html" class="btn-secondary">Our mission</a>
       </div>
     </div>
     <div class="hero-right">
@@ -240,7 +242,7 @@ footer{background:var(--slate)}
 <div class="announce">
   <span class="ann-badge">New</span>
   <span class="ann-text">Stroke awareness workshops now available in Bergen &amp; Passaic County.</span>
-  <a href="#" class="ann-link">Register now →</a>
+  <a href="contact.html" class="ann-link">Register now →</a>
 </div>
 
 <section class="programs">
@@ -267,7 +269,7 @@ footer{background:var(--slate)}
     <h2>The first responder is almost never a paramedic.</h2>
     <p>When a cardiac arrest or stroke happens, the person nearest the victim is a spouse, a coworker, or a stranger. The gap between collapse and EMS arrival averages 7–10 minutes. Trained bystanders fill that gap — and that gap is the difference between life and death.</p>
     <p>Our programs are designed by an active EMT and built around what he's seen on the job. Every course is free, every lesson is practical, and no medical background is required.</p>
-    <a href="#" class="learn-link">Read our approach →</a>
+    <a href="about.html" class="learn-link">Read our approach →</a>
   </div>
   <div class="why-right">
     <div class="why-stat"><div class="why-bar why-bar-coral"></div><div><div class="why-stat-num">N/A</div><div class="why-stat-label">community members trained since founding</div></div></div>
@@ -279,19 +281,18 @@ footer{background:var(--slate)}
 <section class="about">
   <div class="about-visual">
     <div class="about-img">
-      <div class="about-img-texture"></div>
-      <div class="about-img-letter">EEI</div>
+      <img src="images/event1.jpg" alt="EEI team at Old Tappan EMS event">
       <div class="about-badge"><strong>100%</strong><span>Free to attend</span></div>
     </div>
   </div>
   <div class="about-text">
     <p class="section-eyebrow">Our story</p>
     <h2>Student-Founded. Community-Driven.</h2>
-    <p>Our co-founder is a certified EMT who has responded to hundreds of real emergencies. Every program we offer is designed around what he's witnessed on the job — and the moments where a prepared bystander changed the outcome.</p>
-    <p>We believe emergency education shouldn't sit behind paywalls or hospital waiting rooms. It belongs in schools, workplaces, houses of worship, and neighborhood centers.</p>
+    <p>EEI was co-founded by Aaron Choi and Ian Oak, two juniors from Northern Valley Regional High School who believe life-saving education should be free and accessible to every community.</p>
+    <p>Ian brings firsthand emergency response experience as a certified EMT, while Aaron leads outreach, operations, and community partnerships. Together, they are building practical programs for schools, workplaces, houses of worship, and neighborhood centers.</p>
     <div class="founders">
-      <div class="founder-card"><div class="founder-av av1">JD</div><div><div class="founder-name">Jane Doe</div><div class="founder-role">Co-founder &amp; Executive Director</div></div></div>
-      <div class="founder-card"><div class="founder-av av2">RS</div><div><div class="founder-name">Ryan Smith, EMT-B</div><div class="founder-role">Co-founder &amp; Medical Program Lead</div></div></div>
+      <div class="founder-card"><div class="founder-av av1">IO</div><div><div class="founder-name">Ian Oak</div><div class="founder-role">Co-founder &amp; Medical Program Lead</div></div></div>
+      <div class="founder-card"><div class="founder-av av2">AC</div><div><div class="founder-name">Aaron Choi</div><div class="founder-role">Co-founder &amp; Executive Director</div></div></div>
     </div>
   </div>
 </section>
@@ -323,7 +324,7 @@ footer{background:var(--slate)}
       <button class="tier">$100</button>
       <button class="tier">$250</button>
     </div>
-    <button class="give-btn">Donate $50 →</button>
+    <a href="donate.html" class="give-btn">Donate $50 →</a>
     <p class="secure">🔒 Secure · 501(c)(3) · 100% to programs</p>
   </div>
 </section>
@@ -337,19 +338,19 @@ footer{background:var(--slate)}
     <div class="footer-col">
       <h4>Programs</h4>
       <ul>
-        <li><a href="#">CPR &amp; AED</a></li>
-        <li><a href="#">Stroke</a></li>
-        <li><a href="#">Diabetic Emergencies</a></li>
-        <li><a href="#">Seizures</a></li>
-        <li><a href="#">Choking</a></li>
-        <li><a href="#">Anaphylaxis</a></li>
+        <li><a href="programs.html">CPR &amp; AED</a></li>
+        <li><a href="programs.html">Stroke</a></li>
+        <li><a href="programs.html">Diabetic Emergencies</a></li>
+        <li><a href="programs.html">Seizures</a></li>
+        <li><a href="programs.html">Choking</a></li>
+        <li><a href="programs.html">Anaphylaxis</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Organization</h4>
       <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Our Team</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="about.html">Our Team</a></li>
         <li><a href="#">Partners</a></li>
         <li><a href="#">Annual Report</a></li>
         <li><a href="#">Press</a></li>
@@ -358,11 +359,11 @@ footer{background:var(--slate)}
     <div class="footer-col">
       <h4>Get Involved</h4>
       <ul>
-        <li><a href="#">Donate</a></li>
-        <li><a href="#">Volunteer</a></li>
-        <li><a href="#">Host a Workshop</a></li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="contact.html">Volunteer</a></li>
+        <li><a href="contact.html">Host a Workshop</a></li>
         <li><a href="#">Corporate Partners</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
   </div>
