@@ -136,6 +136,7 @@ footer{background:var(--slate)}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 </style>
+<link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
@@ -144,6 +145,7 @@ footer{background:var(--slate)}
     <img class="nav-logo" src="images/logo.png" alt="Emergency Education Initiative logo">
     <div class="nav-wordmark">Emergency Education Initiative<small>Nonprofit Organization</small></div>
   </a>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <ul class="nav-links">
     <li><a href="programs.html">Programs</a></li>
     <li><a href="about.html">About Us</a></li>
@@ -331,6 +333,11 @@ function setFilter(el, topic) {
   document.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active'));
   el.classList.add('active');
 }
+
+document.querySelector('.nav-toggle').addEventListener('click',function(){
+  const open=document.querySelector('nav').classList.toggle('nav-open');
+  this.setAttribute('aria-expanded',open);
+});
 </script>
 </body>
 </html>

@@ -1,0 +1,112 @@
+/* Shared mobile/tablet responsive rules for all EEI pages.
+   Loaded after each page's inline <style> block so these rules win the cascade. */
+
+img{max-width:100%}
+
+/* ---------- Hamburger nav toggle (built, hidden on desktop) ---------- */
+.nav-toggle{
+  display:none;background:none;border:none;cursor:pointer;
+  width:34px;height:34px;align-items:center;justify-content:center;
+  flex-direction:column;gap:5px;flex-shrink:0;padding:0;
+}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--slate);border-radius:2px;transition:transform .25s,opacity .25s}
+nav.nav-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+nav.nav-open .nav-toggle span:nth-child(2){opacity:0}
+nav.nav-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ===================== TABLET & BELOW (<=860px) ===================== */
+@media (max-width:860px){
+
+  /* -- nav becomes a collapsible mobile menu -- */
+  nav{
+    flex-wrap:wrap;height:auto;min-height:70px;
+    padding:.9rem 1.5rem;row-gap:.5rem;
+    max-height:100vh;overflow-y:auto;
+  }
+  .nav-toggle{display:flex}
+  .nav-links,.nav-actions{display:none}
+  nav.nav-open .nav-links,nav.nav-open .nav-actions{display:flex}
+  .nav-links{
+    flex-direction:column;width:100%;gap:0;order:3;
+    border-top:1px solid var(--border);padding-top:.75rem;
+  }
+  .nav-links li{width:100%}
+  .nav-links a{display:block;padding:.7rem 0}
+  .nav-actions{flex-direction:column;align-items:stretch;width:100%;gap:.6rem;order:4;padding-bottom:.5rem}
+  .btn-ghost-nav,.btn-coral-nav{width:100%;text-align:center}
+
+  /* -- reduce generous side padding everywhere -- */
+  .page-hero,.programs,.why,.about,.donate,.mission,.corporate,.donate-main,.contact-body,
+  .founders,.timeline,.partners,.cta,.cta-band,.host-section,.who-section,.programs-section,
+  .events-section,.calendar-section,.past-section,.filter-bar,.section,.footer-main,.footer-bottom,
+  .announce,.pullquote{
+    padding-left:2rem;padding-right:2rem;
+  }
+  .section-divider{margin-left:2rem;margin-right:2rem}
+
+  /* -- two-column content sections stack -- */
+  .hero-body,.programs-header,.why,.about,.donate,.mission,.corporate,.donate-main,
+  .contact-body,.form-row,.host-section,.founders-grid{
+    grid-template-columns:1fr;gap:2.5rem;
+  }
+
+  /* -- 3/4 column bands step down to 2 columns -- */
+  .prog-grid,.stats-band,.partners-grid,.past-grid,.downloads-grid,.videos-grid,
+  .who-grid,.programs-grid,.quick-facts,.hero-strip{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  /* -- footer drops from 4 columns to 2 -- */
+  .footer-main{grid-template-columns:repeat(2,1fr);gap:2rem}
+
+  /* -- sticky side panels don't make sense once stacked -- */
+  .donate-right,.contact-form-wrap{position:static;top:auto}
+
+  /* -- event card: let the row wrap instead of forcing 3 fixed columns -- */
+  .event-card{grid-template-columns:auto 1fr;row-gap:.85rem}
+  .event-action{grid-column:1/-1}
+  .event-action .btn-register,.event-action .btn-register-ghost{width:100%;text-align:center}
+}
+
+/* ===================== PHONE (<=600px) ===================== */
+@media (max-width:600px){
+
+  /* -- tighten side padding further -- */
+  .page-hero,.programs,.why,.about,.donate,.mission,.corporate,.donate-main,.contact-body,
+  .founders,.timeline,.partners,.cta,.cta-band,.host-section,.who-section,.programs-section,
+  .events-section,.calendar-section,.past-section,.filter-bar,.section,.footer-main,.footer-bottom,
+  .announce,.pullquote{
+    padding-left:1.25rem;padding-right:1.25rem;
+  }
+  .section-divider{margin-left:1.25rem;margin-right:1.25rem}
+
+  /* -- compact the big vertical section paddings -- */
+  .page-hero{padding-top:100px;padding-bottom:50px}
+  .programs,.why,.about,.donate{padding-top:3.5rem;padding-bottom:3.5rem}
+  .founders,.timeline,.cta-band{padding-top:3.5rem;padding-bottom:3.5rem}
+  .partners,.corporate,.mission{padding-top:3.5rem;padding-bottom:3.5rem}
+  .cta,.pullquote{padding-top:3.5rem;padding-bottom:3.5rem}
+  .who-section,.programs-section,.host-section{padding-top:3.5rem;padding-bottom:3.5rem}
+  .past-section{padding-top:3.5rem;padding-bottom:3.5rem}
+  .contact-body,.donate-main{padding-top:2.5rem;padding-bottom:3.5rem}
+
+  /* -- hero on the homepage shouldn't force a full viewport height -- */
+  .hero{min-height:auto}
+  .hero-body{padding-top:3rem;padding-bottom:2rem}
+
+  /* -- remaining multi-column bands collapse to a single column -- */
+  .prog-grid,.stats-band,.partners-grid,.past-grid,.downloads-grid,.videos-grid,
+  .who-grid,.programs-grid,.quick-facts,.hero-strip,.ext-grid,.footer-main{
+    grid-template-columns:1fr;
+  }
+  .tiers,.amounts{grid-template-columns:repeat(2,1fr)}
+
+  /* -- divider lines on stat/fact bands switch from vertical to horizontal -- */
+  .stat-cell,.qf-cell,.hs-cell{border-right:none;border-bottom:1px solid rgba(255,255,255,.07)}
+
+  /* -- shrink oversized decorative visuals so they don't dominate a phone screen -- */
+  .about-img,.mission-img,.calendar-embed-placeholder{height:240px}
+
+  /* -- event card action button stacks under the rest of the row -- */
+  .event-card{grid-template-columns:1fr}
+}

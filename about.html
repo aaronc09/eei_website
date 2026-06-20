@@ -131,6 +131,7 @@ footer{background:var(--slate)}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 </style>
+<link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
@@ -139,6 +140,7 @@ footer{background:var(--slate)}
     <img class="nav-logo" src="images/logo.png" alt="Emergency Education Initiative logo">
     <div class="nav-wordmark">Emergency Education Initiative<small>Nonprofit Organization</small></div>
   </a>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <ul class="nav-links">
     <li><a href="programs.html">Programs</a></li>
     <li><a href="about.html" class="active">About Us</a></li>
@@ -195,7 +197,7 @@ footer{background:var(--slate)}
   <div class="founders-grid">
     <div class="founder-card">
       <div class="founder-top">
-        <img src="images/ian.jpg" alt="Ian Oak" style="width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid rgba(255,255,255,.15)">
+        <img src="images/ian.jpg" alt="Ian Oak" style="width:110px;height:110px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid rgba(255,255,255,.15)">
         <div>
           <div class="founder-name">Ian Oak</div>
           <div class="founder-title">Co-founder &amp; Medical Program Lead</div>
@@ -209,7 +211,7 @@ footer{background:var(--slate)}
     </div>
     <div class="founder-card">
       <div class="founder-top">
-        <img src="images/aaron.jpg" alt="Aaron Choi" style="width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid rgba(255,255,255,.15)">
+        <img src="images/aaron.jpg" alt="Aaron Choi" style="width:110px;height:110px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid rgba(255,255,255,.15)">
         <div>
           <div class="founder-name">Aaron Choi</div>
           <div class="founder-title">Co-founder &amp; Executive Director</div>
@@ -316,5 +318,12 @@ footer{background:var(--slate)}
     <div class="fb-links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
   </div>
 </footer>
+
+<script>
+document.querySelector('.nav-toggle').addEventListener('click',function(){
+  const open=document.querySelector('nav').classList.toggle('nav-open');
+  this.setAttribute('aria-expanded',open);
+});
+</script>
 </body>
 </html>
