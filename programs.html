@@ -6,6 +6,11 @@
 <title>Programs — Emergency Education Initiative</title>
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<meta name="description" content="Explore EEI's free emergency response programs — CPR &amp; AED, stroke recognition, diabetic emergencies, seizures, choking, and anaphylaxis.">
+<meta property="og:title" content="Programs — Emergency Education Initiative">
+<meta property="og:description" content="Six free, hands-on emergency response programs taught by an active EMT — no medical background needed.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -382,23 +387,29 @@ footer{background:var(--slate)}
   <div class="host-form-card">
     <h3>Request a workshop</h3>
     <p>We'll get back to you within 48 hours.</p>
-    <div class="form-group"><label class="form-label">Your name</label><input type="text" class="form-input" placeholder="Jane Doe"></div>
-    <div class="form-group"><label class="form-label">Organization or group</label><input type="text" class="form-input" placeholder="Lincoln Elementary School"></div>
-    <div class="form-group"><label class="form-label">Email address</label><input type="email" class="form-input" placeholder="jane@example.com"></div>
-    <div class="form-group">
-      <label class="form-label">Program(s) of interest</label>
-      <select class="form-select">
-        <option>CPR &amp; Cardiac Arrest</option>
-        <option>Stroke Recognition</option>
-        <option>Diabetic Emergencies</option>
-        <option>Seizure First Aid</option>
-        <option>Choking Response</option>
-        <option>Anaphylaxis &amp; EpiPen</option>
-        <option>Multiple / Full day</option>
-      </select>
-    </div>
-    <div class="form-group"><label class="form-label">Estimated group size</label><input type="text" class="form-input" placeholder="e.g. 25 people"></div>
-    <button class="host-submit" onclick="this.textContent='Request sent ✓';this.style.background='var(--slate)'">Send request →</button>
+    <form id="host-form" onsubmit="return submitHostForm(event)">
+      <div class="form-group"><label class="form-label">Your name</label><input type="text" name="Name" class="form-input" placeholder="Jane Doe" required></div>
+      <div class="form-group"><label class="form-label">Organization or group</label><input type="text" name="Organization" class="form-input" placeholder="Lincoln Elementary School" required></div>
+      <div class="form-group"><label class="form-label">Email address</label><input type="email" name="Email" class="form-input" placeholder="jane@example.com" required></div>
+      <div class="form-group">
+        <label class="form-label">Program(s) of interest</label>
+        <select class="form-select" name="Program">
+          <option>CPR &amp; Cardiac Arrest</option>
+          <option>Stroke Recognition</option>
+          <option>Diabetic Emergencies</option>
+          <option>Seizure First Aid</option>
+          <option>Choking Response</option>
+          <option>Anaphylaxis &amp; EpiPen</option>
+          <option>Multiple / Full day</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Estimated group size</label><input type="text" name="Group size" class="form-input" placeholder="e.g. 25 people"></div>
+      <input type="hidden" name="_subject" value="New workshop request from the EEI website">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <button type="submit" class="host-submit">Send request →</button>
+    </form>
   </div>
 </section>
 
@@ -434,7 +445,7 @@ footer{background:var(--slate)}
       <ul>
         <li><a href="about.html">About Us</a></li>
         <li><a href="about.html">Our Team</a></li>
-        <li><a href="#">Partners</a></li>
+        <li><a href="about.html#partners">Partners</a></li>
         <li><a href="#">Annual Report</a></li>
         <li><a href="#">Press</a></li>
       </ul>
@@ -445,7 +456,7 @@ footer{background:var(--slate)}
         <li><a href="donate.html">Donate</a></li>
         <li><a href="contact.html">Volunteer</a></li>
         <li><a href="contact.html">Host a Workshop</a></li>
-        <li><a href="#">Corporate Partners</a></li>
+        <li><a href="donate.html#corporate">Corporate Partners</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
@@ -457,6 +468,31 @@ footer{background:var(--slate)}
 </footer>
 
 <script>
+async function submitHostForm(event){
+  event.preventDefault();
+  const form = event.target;
+  const btn = form.querySelector('.host-submit');
+  const original = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/contact@eeihealth.org', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form),
+    });
+    if (!res.ok) throw new Error('Request failed');
+    btn.textContent = 'Request sent ✓';
+    btn.style.background = 'var(--slate)';
+    form.querySelectorAll('input,select').forEach(el => el.disabled = true);
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = original;
+    alert('Something went wrong sending your request. Please email us directly at contact@eeihealth.org.');
+  }
+  return false;
+}
+
 document.querySelector('.nav-toggle').addEventListener('click',function(){
   const open=document.querySelector('nav').classList.toggle('nav-open');
   this.setAttribute('aria-expanded',open);
